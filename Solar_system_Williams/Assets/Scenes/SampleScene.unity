@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.015452958, g: 0.01913713, b: 0.03831066, a: 1}
+  m_IndirectSpecularColor: {r: 0.014417079, g: 0.019061157, b: 0.037316374, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65dd81126ac26994eaef1dd096149014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveVelocity: {x: 5, y: 0, z: 0}
+  moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &587068485
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +759,7 @@ GameObject:
   - component: {fileID: 785044520}
   - component: {fileID: 785044519}
   - component: {fileID: 785044518}
+  - component: {fileID: 785044521}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Untagged
@@ -842,6 +843,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785044516}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &785044521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785044516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897630e499c17dc439c1d8797c9cceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationMultiplyer: 0.6
 --- !u!1 &803605398
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +963,7 @@ GameObject:
   - component: {fileID: 831657542}
   - component: {fileID: 831657541}
   - component: {fileID: 831657540}
+  - component: {fileID: 831657543}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -1032,6 +1047,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831657538}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &831657543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831657538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897630e499c17dc439c1d8797c9cceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationMultiplyer: 0.7
 --- !u!1 &920414628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1357,7 @@ GameObject:
   - component: {fileID: 1111654597}
   - component: {fileID: 1111654596}
   - component: {fileID: 1111654595}
+  - component: {fileID: 1111654598}
   m_Layer: 0
   m_Name: Mars
   m_TagString: Untagged
@@ -1412,6 +1441,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111654593}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1111654598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111654593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897630e499c17dc439c1d8797c9cceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationMultiplyer: 0.8
 --- !u!1 &1565426840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1559,7 @@ GameObject:
   - component: {fileID: 1684024476}
   - component: {fileID: 1684024475}
   - component: {fileID: 1684024474}
+  - component: {fileID: 1684024477}
   m_Layer: 0
   m_Name: Mercury
   m_TagString: Untagged
@@ -1600,6 +1643,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684024472}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1684024477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684024472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897630e499c17dc439c1d8797c9cceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationMultiplyer: 0.5
 --- !u!1 &1717484910
 GameObject:
   m_ObjectHideFlags: 0
