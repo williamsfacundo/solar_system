@@ -57,7 +57,7 @@ public class camera : MonoBehaviour
         {
             transform.position += cameraSunNormalDirection * cameraMoveSpeedValue * Time.deltaTime;
         }        
-    }
+    }  
 
     void CalculateCameraSunNormalDirection() 
     {
