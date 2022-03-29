@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class camera : MonoBehaviour
 {    
-    public GameObject sun = null;
+    [SerializeField] private GameObject[] planets;
+
+    private short index = 0;
 
     private float rotationValue = 100.0f;
     private float cameraMoveSpeedValue = 1000f;
@@ -20,8 +22,8 @@ public class camera : MonoBehaviour
     {       
         Vector3 rotationValue = cameraInitialRotation - transform.rotation.eulerAngles;
 
-        transform.position = sun.transform.position - cameraOffset;
-        transform.LookAt(sun.transform.position);
+        transform.position = planets[index].transform.position - cameraOffset;
+        transform.LookAt(planets[index].transform.position);
 
         transform.Rotate(rotationValue);
 
@@ -31,19 +33,18 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        cameraSphereDistance = Vector3.Distance(transform.position, sun.transform.position);
-
-
+        cameraSphereDistance = Vector3.Distance(transform.position, planets[index].transform.position);
+        
         if (Input.GetKey(KeyCode.A))
         {
-            transform.RotateAround(sun.transform.position, rotationAxes, rotationValue * Time.deltaTime);
-            transform.LookAt(sun.transform.position);
+            transform.RotateAround(planets[index].transform.position, rotationAxes, rotationValue * Time.deltaTime);
+            transform.LookAt(planets[index].transform.position);
             CalculateCameraSunNormalDirection();
         }
         else if (Input.GetKey(KeyCode.D)) 
         {
-            transform.RotateAround(sun.transform.position, rotationAxes, -(rotationValue * Time.deltaTime));
-            transform.LookAt(sun.transform.position);
+            transform.RotateAround(planets[index].transform.position, rotationAxes, -(rotationValue * Time.deltaTime));
+            transform.LookAt(planets[index].transform.position);
             CalculateCameraSunNormalDirection();
         }
 
@@ -59,6 +60,6 @@ public class camera : MonoBehaviour
 
     void CalculateCameraSunNormalDirection() 
     {
-        cameraSunNormalDirection = Vector3.Normalize(transform.position - sun.transform.position);        
+        cameraSunNormalDirection = Vector3.Normalize(transform.position - planets[index].transform.position);        
     }
 }
