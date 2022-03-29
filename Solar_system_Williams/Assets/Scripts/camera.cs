@@ -1,9 +1,10 @@
 using UnityEngine;
 
 public class camera : MonoBehaviour
-{    
+{   
     [SerializeField] private GameObject[] planets;
 
+    private short maxIndex = 9;
     private short index = 0;
 
     private float rotationValue = 100.0f;
@@ -61,5 +62,25 @@ public class camera : MonoBehaviour
     void CalculateCameraSunNormalDirection() 
     {
         cameraSunNormalDirection = Vector3.Normalize(transform.position - planets[index].transform.position);        
+    }
+
+    public void NextIndexRight() 
+    {
+        index += 1;
+
+        if (index > maxIndex - 1) 
+        {
+            index = 0;
+        }
+    }
+
+    public void NextIndexLeft() 
+    {
+        index -= 1;
+
+        if (index < 0)
+        {
+            index = (short)(maxIndex - 1);
+        }
     }
 }
