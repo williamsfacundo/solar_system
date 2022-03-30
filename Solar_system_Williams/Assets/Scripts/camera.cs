@@ -4,9 +4,17 @@ public class camera : MonoBehaviour
 {   
     [SerializeField] private GameObject[] planets;
 
+    enum MovementStatus { RotateRight, RotateLeft, MoveFront, MoveBack, None};
+
+    MovementStatus movementStatus = MovementStatus.None;
+    MovementStatus rotationStatus = MovementStatus.None;
+
     const float maxDistanceMultiplyer = 2.5f;
 
     private short index = 0;
+
+    private bool noneMovement = true;
+    private bool noneRotation = true;
 
     private float rotationValue = 100.0f;
     private float cameraMoveSpeedValue = 1000f;
@@ -34,32 +42,71 @@ public class camera : MonoBehaviour
         CalculateCameraSunNormalDirection();        
     }
 
+    private void Update()
+    {      
+        if (Input.GetKey(KeyCode.A))
+        {
+            rotationStatus = MovementStatus.RotateLeft;            
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            rotationStatus = MovementStatus.RotateRight;           
+        }
+        else 
+        {
+            rotationStatus = MovementStatus.None;          
+        }
+
+        if (Input.GetKey(KeyCode.W) && cameraSphereDistance > minDistance)
+        {
+            movementStatus = MovementStatus.MoveFront;
+        }
+        else if (Input.GetKey(KeyCode.S) && cameraSphereDistance < maxDistance)
+        {
+            movementStatus = MovementStatus.MoveBack;            
+        }
+        else 
+        {
+            movementStatus = MovementStatus.None;
+        }
+    }
+
     // Update is called once per frame
     private void FixedUpdate()
     {
         cameraSphereDistance = Vector3.Distance(transform.position, planets[index].transform.position);
 
-        transform.LookAt(planets[index].transform.position);        
+        transform.LookAt(planets[index].transform.position);
 
-        if (Input.GetKey(KeyCode.A))
+        switch (rotationStatus) 
         {
-            transform.RotateAround(planets[index].transform.position, rotationAxes, rotationValue * Time.deltaTime);
-            CalculateCameraSunNormalDirection();
-        }
-        else if (Input.GetKey(KeyCode.D)) 
-        {
-            transform.RotateAround(planets[index].transform.position, rotationAxes, -(rotationValue * Time.deltaTime));
-            CalculateCameraSunNormalDirection();
+            case MovementStatus.RotateRight:
+
+                transform.RotateAround(planets[index].transform.position, rotationAxes, -(rotationValue * Time.deltaTime));
+                CalculateCameraSunNormalDirection();
+                break;
+            case MovementStatus.RotateLeft:
+
+                transform.RotateAround(planets[index].transform.position, rotationAxes, rotationValue * Time.deltaTime);
+                CalculateCameraSunNormalDirection();
+                break;
+            default:
+                break;
         }
 
-        if (Input.GetKey(KeyCode.W) && cameraSphereDistance > minDistance)
-        {
-            transform.position -= cameraSunNormalDirection * cameraMoveSpeedValue * Time.deltaTime;
+        switch (movementStatus) 
+        {                
+            case MovementStatus.MoveFront:
+
+                transform.position -= cameraSunNormalDirection * cameraMoveSpeedValue * Time.deltaTime;
+                break;
+            case MovementStatus.MoveBack:
+
+                transform.position += cameraSunNormalDirection * cameraMoveSpeedValue * Time.deltaTime;
+                break;
+            default:
+                break;
         }
-        else if (Input.GetKey(KeyCode.S) && cameraSphereDistance < maxDistance)
-        {
-            transform.position += cameraSunNormalDirection * cameraMoveSpeedValue * Time.deltaTime;
-        }        
     }
 
     private Vector3 GetCameraOffset() 
