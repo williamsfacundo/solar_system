@@ -10,14 +10,14 @@ public class movement : MonoBehaviour
     public Vector3 moveVelocity = new Vector3(0.0f, 0.0f, 0.0f);
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //moveVelocity.x = initialXVelocity;
+        moveVelocity.x = initialXVelocity;
         transform.position = initialPosition;        
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (transform.position.x < maxXPos) {
 
@@ -27,5 +27,16 @@ public class movement : MonoBehaviour
 
             transform.position = initialPosition;
         }
+    }
+    public void StopContinueMovement()
+    {
+        if (moveVelocity.x != 0f)
+        {
+            moveVelocity.x = 0f;
+        }
+        else 
+        {
+            moveVelocity.x = initialXVelocity;
+        }          
     }
 }

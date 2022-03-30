@@ -9,6 +9,8 @@ public class local_rotation : MonoBehaviour
     
     private Vector3 rotationAxes = new Vector3(0.0f, 1.0f, 0.0f);
 
+    private bool rotate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +19,16 @@ public class local_rotation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Rotate(rotationAxes * localRotation * Time.deltaTime);        
+        if (rotate) 
+        {
+            transform.Rotate(rotationAxes * localRotation * Time.deltaTime);
+        }                
+    }
+
+    public void ChangeRotateBool() 
+    {
+        rotate = !rotate;
     }
 }
