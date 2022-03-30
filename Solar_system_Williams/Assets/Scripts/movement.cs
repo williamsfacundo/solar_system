@@ -12,7 +12,7 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveVelocity.x = initialXVelocity;
+        //moveVelocity.x = initialXVelocity;
         transform.position = initialPosition;        
     }
 
