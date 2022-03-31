@@ -6,9 +6,14 @@ public class closeAplication : MonoBehaviour
 {    
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape)) 
+        if (Input.GetKey(KeyCode.Escape))
         {
-            Application.Quit();
+            CloseApp();            
         }
+    }
+
+    public void CloseApp() 
+    {
+        Application.Quit();
     }
 }

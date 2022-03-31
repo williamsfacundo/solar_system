@@ -28,6 +28,7 @@ public class movement : MonoBehaviour
             transform.position = initialPosition;
         }
     }
+
     public void StopContinueMovement()
     {
         if (moveVelocity.x != 0f)
